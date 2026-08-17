@@ -1,26 +1,16 @@
 import java.util.*;
 
 class LMSV_1 {
-    static Scanner Sc = new Scanner(System.in);
     static int a;
     static String tit[];
     static String aut[];
     static int vol[];
     static int isb[];
     static boolean avl[];
+    static Scanner Sc = new Scanner(System.in);
 
-    LMSV_1(int size) {
-    a = size;
-    tit = new String[a];
-    aut = new String[a];
-    vol = new int[a];
-    isb = new int[a];
-    avl = new boolean[a];
-}
     // Add Book
     static void addBook() {
-        System.out.println("Enter the number of books");
-        a = Sc.nextInt();
         System.out.println("Enter the title(s) of the book(s)");
         for (int i = 0; i < a; i++) {
             System.out.println("Title of book " + (i + 1) + " is: ");
@@ -206,6 +196,14 @@ class LMSV_1 {
         boolean run = true;
         while (run == true) {
             System.out.println("***Welcome***");
+            System.out.println("Enter the number of books");
+            a = Sc.nextInt();
+            Sc.nextLine();
+            tit = new String[a];
+            aut = new String[a];
+            vol = new int[a];
+            isb = new int[a];
+            avl = new boolean[a];
             System.out.println("What are we doing?");
             System.out.println(
                     "1. Add book.  2. View all books.  3. Search a specific book.  4. Issue a book.  5. Return a previously issued book.  6. Exit.");
@@ -213,8 +211,6 @@ class LMSV_1 {
             Sc.nextLine();
             switch (choice) {
                 case 1:
-                    System.out.println("How many books are we going to add?");
-                    
                     addBook();
                     break;
                 case 2:
