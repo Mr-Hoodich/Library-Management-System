@@ -213,6 +213,8 @@ class LMSV_1 {
             Sc.nextLine();
             switch (choice) {
                 case 1:
+                    System.out.println("How many books are we going to add?");
+                    
                     addBook();
                     break;
                 case 2:
