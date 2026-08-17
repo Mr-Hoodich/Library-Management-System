@@ -15,20 +15,21 @@ class LMSV_1 {
         for (int i = 0; i < a; i++) {
             System.out.println("Title of book " + (i + 1) + " is: ");
             tit[i] = Sc.nextLine();
+            avl[i] = true;
         }
         System.out.println("Enter the author(s) of the book(s)");
         for (int i = 0; i < a; i++) {
-            System.out.println("Author(s) of book " + (i + 1) + " is/are: ");
+            System.out.println("Author(s) of book " + tit[i] + " is/are: ");
             aut[i] = Sc.nextLine();
         }
         System.out.println("Enter the number of volume(s) the book(s)");
         for (int i = 0; i < a; i++) {
-            System.out.println("Volume(s) of book " + (i + 1) + " is/are: ");
+            System.out.println("Volume(s) of book " + tit[i] + " is/are: ");
             vol[i] = Sc.nextInt();
         }
         System.out.println("Enter the International Standard Book (ISB) number of the book(s)");
         for (int i = 0; i < a; i++) {
-            System.out.println("ISBN of book " + (i + 1) + " is: ");
+            System.out.println("ISBN of book " + tit[i] + " is: ");
             isb[i] = Sc.nextInt();
         }
     }
@@ -68,10 +69,10 @@ class LMSV_1 {
                                 isb[i] + ".   " + tit[i] + ".   " + vol[i] + ".   " + aut[i] + ".   " + avl[i]);
                         findings++;
                     }
+                }
                     if (findings == 0) {
                         System.out.println("Sorry, we currently do not have any book by " + author + ".");
                     }
-                }
                 break;
             case 2:
                 System.out.println("Enter the name of Book");
@@ -194,19 +195,23 @@ class LMSV_1 {
     // Main
     public static void main(String args[]) {
         boolean run = true;
+        int newLib = 0;
         while (run == true) {
             System.out.println("***Welcome***");
-            System.out.println("Enter the number of books");
-            a = Sc.nextInt();
-            Sc.nextLine();
-            tit = new String[a];
-            aut = new String[a];
-            vol = new int[a];
-            isb = new int[a];
-            avl = new boolean[a];
+            if (newLib == 0) {
+                System.out.println("Enter the number of books");
+                a = Sc.nextInt();
+                Sc.nextLine();
+                tit = new String[a];
+                aut = new String[a];
+                vol = new int[a];
+                isb = new int[a];
+                avl = new boolean[a];
+                newLib++;
+            }
             System.out.println("What are we doing?");
             System.out.println(
-                    "1. Add book.  2. View all books.  3. Search a specific book.  4. Issue a book.  5. Return a previously issued book.  6. Exit.");
+                    "1. Add book.  2. View all books.  3. Search a specific book.  4. Issue a book.  5. Return a previously issued book.  6. Edit number of books. 7. Exit.");
             int choice = Sc.nextInt();
             Sc.nextLine();
             switch (choice) {
@@ -226,6 +231,9 @@ class LMSV_1 {
                     returnBook();
                     break;
                 case 6:
+                    newLib--;
+                    break;
+                case 7:
                     System.out.println("Exit Succesful");
                     run = false;
                     break;
